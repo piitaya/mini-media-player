@@ -116,17 +116,23 @@ class MiniMediaPlayerMediaControls extends LitElement {
   }
 
   renderVolSlider(muted) {
+    const value = this.vol;
+
     return html`
       ${this.renderMuteButton(muted)}
       <ha-slider
         @change=${this.handleVolumeChange}
         @click=${e => e.stopPropagation()}
         ?disabled=${muted}
-        min=${this.minVol} max=${this.maxVol}
-        .value=${this.player.vol * 100}
+        min=${this.minVol} 
+        max=${this.maxVol}
+        value=${value}
+        .value=${value}
         step=${this.config.volume_step || 1}
-        dir=${'ltr'}
-        ignore-bar-touch pin labeled>
+        dir="ltr"
+        ignore-bar-touch 
+        pin 
+        labeled>
       </ha-slider>
     `;
   }
@@ -273,6 +279,7 @@ class MiniMediaPlayerMediaControls extends LitElement {
           display: flex;
           width: 100%;
           justify-content: space-between;
+          align-items: center;
         }
         .flex {
           display: flex;
@@ -283,16 +290,19 @@ class MiniMediaPlayerMediaControls extends LitElement {
           max-width: none;
           min-width: 100px;
           width: 100%;
-          --md-sys-color-primary: var(--mmp-accent-color); /* before 2025.10.0 */
           color: var(--primary-text-color);
+          --ha-slider-indicator-color: var(--mmp-accent-color);
+          --ha-slider-thumb-color: var(--mmp-accent-color);
         }
         ha-icon-button {
           min-width: var(--mmp-unit);
         }
         .mmp-media-controls__volume {
           flex: 100;
-          max-height: var(--mmp-unit);
           align-items: center;
+        }
+        .mmp-media-controls__volume > ha-icon-button {
+          flex-shrink: 0;
         }
         .mmp-media-controls__volume.--buttons {
           justify-content: left;

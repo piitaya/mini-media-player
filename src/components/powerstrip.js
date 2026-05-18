@@ -128,8 +128,7 @@ class MiniMediaPlayerPowerstrip extends LitElement {
       css`
         :host {
           display: flex;
-          line-height: var(--mmp-unit);
-          max-height: var(--mmp-unit);
+          align-items: center;
         }
         :host([flow]) mmp-media-controls {
           max-width: unset;

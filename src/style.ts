@@ -388,6 +388,7 @@ const style = css`
   mmp-powerstrip {
     flex: 1;
     justify-content: flex-end;
+    align-items: center;
     margin-right: 0;
     margin-left: auto;
     width: auto;
